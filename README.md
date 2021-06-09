@@ -93,4 +93,12 @@ Dans les deux cas, la solution sera enregistrée au même endroit que l'image d'
   * Fully connected de 10, fonction softmax
 
 Optimizeur Adam de learning rate = 1e-4 et loss function `Sparse categorical crossentropy`
+
+Ce modèle a été réalisé en collaboration avec **Michael Gellenoncourt**.
+
+L'IA a un taux de réussite de `99.78%` sur nos tests.
+
+### Dossier AI
+
+Le dossier AI contient le modèle que nous avons utilisé, ainsi que des fonctions permettant si vous le souhaitez de créer vos propres modèles à l'aide des images situées dans le dossier `dataset/raw`.
  
