@@ -16,7 +16,7 @@ Programme <b>personnel</b> développé en `Python` de scanner une grille de Sudo
 
 ### Implémentation
 
-Le programme a été développé en `Python` en utilisant principalement les bibliothèques `opencv` (cv2) et `numpy` pour le traitement d'image. La reconnaissance des chiffres est effectuée à l'aide de `Keras / Tensorflow` sur un modèle entraîné sur un dataset de **44321** images issues d'un premier livre de Sudoku.
+Le programme a été développé en `Python` en utilisant principalement les bibliothèques `opencv` (cv2) et `numpy` pour le traitement d'image. La reconnaissance des chiffres est effectuée à l'aide de `Keras / Tensorflow` sur un modèle entraîné sur un dataset custom de **44 321** images issues d'un premier livre de Sudoku.
 
 Les images présentes dans `test` sont issues d'un second livre de Sudoku qui n'a pas participé à l'élaboration du dataset.
 
@@ -68,7 +68,7 @@ $ python3 main.py -i chemin/de/l/image.jpg
 
 Dans les deux cas, la solution sera enregistrée au même endroit que l'image d'origine au format `nom-image-d-origine-result.jpg`.
 
-### AI
+## AI
 
 * L'IA utilisée est la suivante :
   * Fully connected de 784
