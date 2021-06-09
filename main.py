@@ -124,7 +124,6 @@ def treat(im):
 
     sol = solve_sudoku([[c for c in line] for line in raw_grid])
 
-    
     step = warp_size // 9
     coords = [step // 2, step // 2]
     blank_image = np.zeros((perspective.shape[0],perspective.shape[1],3), np.uint8)
@@ -143,6 +142,6 @@ def treat(im):
     src_warped = cv2.warpPerspective(blank_image, h, (im.shape[1],im.shape[0]))
     im = cv2.add(im, src_warped)
 
-    cv2.imwrite("{name}-result.jpg", im)
+    cv2.imwrite(f"{name}-result.jpg", im)
 
 treat(im)
