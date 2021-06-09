@@ -108,7 +108,7 @@ Cette nouvelle matrice est découpée en 81 matrices de même taillées, donnant
 
 Si des pixels blancs sont détectés au centre de l'image, celle-ci est envoyée à un `réseau de neurones`.
 
-Une fois toutes les cases identifiées, on utilise résout la grille. Une première idée était d'utiliser du backtracking, mais le temps passé à résoudre une grille n'était pas négligeable. J'ai donc cherché une [réduction de Karp](https://fr.wikipedia.org/wiki/R%C3%A9duction_polynomiale) vers d'autres problèmes. En particulier, le problème de `couverture exacte` se prête bien ) l'exercice. J'ai donc utilisé le très rapide[algorithme X de Knuth](https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth). J'ai pour cela utilisé une implémentation déjà existante de la résolution d'une grille de Sudoku.
+Une fois toutes les cases identifiées, on utilise résout la grille. Une première idée était d'utiliser du backtracking, mais le temps passé à résoudre une grille n'était pas négligeable. J'ai donc cherché une [réduction de Karp](https://fr.wikipedia.org/wiki/R%C3%A9duction_polynomiale) vers d'autres problèmes. En particulier, le problème de [couverture exacte](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte) se prête bien à l'exercice. J'ai donc utilisé le très rapide[algorithme X de Knuth](https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth). J'ai pour cela utilisé une implémentation déjà existante de la résolution d'une grille de Sudoku.
 
 Après cela, il suffit d'afficher sur une image de la taille de perspective les chiffres manquants : 
 
