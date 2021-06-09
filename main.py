@@ -17,9 +17,14 @@ def distance(pt1, pt2):
 
 def preprocessing(im):
     gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    cv2.imwrite("img/grey.jpg", gray)
     blurred = cv2.GaussianBlur(gray, (11, 11), 0)
+    cv2.imwrite("img/blurred.jpg", blurred)
     thresh = cv2.adaptiveThreshold(blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+    cv2.imwrite("img/threshed.jpg", thresh)
     inv = cv2.bitwise_not(thresh)
+    cv2.imwrite("img/inverse.jpg", inv)
+
     return inv
 
 def biggest_grid(canny):
@@ -94,13 +99,14 @@ def treat(im):
     inv = preprocessing(im)
 
     canny = cv2.Canny(inv.copy(), 20, 40)
-
+    cv2.imwrite("img/canny.jpg", canny)
     final_contours = biggest_grid(canny)
 
     ordered_pts, warp_size, warp_dim = prepare_warp(final_contours)
 
     grid = cv2.getPerspectiveTransform(ordered_pts, warp_dim)
     perspective = cv2.warpPerspective(inv, grid, (warp_size, warp_size))
+    cv2.imwrite("img/perspective.jpg", perspective)
     cells = splitcells(perspective)
 
     raw_grid = [[0 for j in range(9)] for i in range(9)]
@@ -108,6 +114,7 @@ def treat(im):
     j = 0
     for c in cells:
         reduced = image_resize(c, 28, 28)
+        cv2.imwrite(f"img/cell-{i*9 + j}.jpg", reduced)
         middle = reduced[10:18, 10:18]
         avg = np.mean(middle)
         if avg > 25:
@@ -136,10 +143,12 @@ def treat(im):
                     coords[0] += step
                 coords[0] = step // 2
                 coords[1] += step
+        cv2.imwrite("img/filled.jpg", blank_image)
     except:
         print("La grille n'a pas été détectée correctement. Merci d'essayer avec une meilleure image :)")
     h = cv2.getPerspectiveTransform(warp_dim, ordered_pts)
     src_warped = cv2.warpPerspective(blank_image, h, (im.shape[1],im.shape[0]))
+    cv2.imwrite("img/filled-perspective.jpg", src_warped)
     im = cv2.add(im, src_warped)
 
     cv2.imwrite(f"{name}-result.jpg", im)
