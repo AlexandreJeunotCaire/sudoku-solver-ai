@@ -122,20 +122,19 @@ def treat(im):
             j = 0
             i += 1
 
-    sol = solve_sudoku([[c for c in line] for line in raw_grid])
+    sol = solve_sudoku(raw_grid)
 
     step = warp_size // 9
     coords = [step // 2, step // 2]
     blank_image = np.zeros((perspective.shape[0],perspective.shape[1],3), np.uint8)
     try:
-        for e in sol:
-            for i, l in enumerate(e):
-                for j, c in enumerate(l):
-                    if raw_grid[i][j] == 0:
-                        cv2.putText(blank_image, str(c), (coords[0], coords[1]), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
-                    coords[0] += step
-                coords[0] = step // 2
-                coords[1] += step
+        for i, line in enumerate(sol):
+            for j, coeff in enumerate(line):
+                if raw_grid[i][j] == 0:
+                    cv2.putText(blank_image, str(coeff), (coords[0], coords[1]), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
+                coords[0] += step
+            coords[0] = step // 2
+            coords[1] += step
     except:
         print("La grille n'a pas été détectée correctement. Merci d'essayer avec une meilleure image :)")
     h = cv2.getPerspectiveTransform(warp_dim, ordered_pts)
