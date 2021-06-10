@@ -11,7 +11,7 @@
 
 ## Description
 
-Programme <b>personnel</b> développé en `Python` de scanner une grille de Sudoku et de la résoudre, avant d'afficher la réponse aux cases manquantes sur la grille.
+Programme <b>personnel</b> développé en `Python` permettant de scanner une grille de Sudoku et de la résoudre, avant d'afficher la réponse aux cases manquantes sur la grille.
 
 
 ### Implémentation
